@@ -1,0 +1,6 @@
+Def Num bill 20
+# Def Str x ""
+Step _start
+    Exp n = "您本月的账单是" + bill
+    Speak n
+End_step

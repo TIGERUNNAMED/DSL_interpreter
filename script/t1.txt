@@ -1,0 +1,39 @@
+# 该脚本演示了各种错误 使用时取消注释即可，注意只会报首个出现的错误
+Def Num addmoney 0
+Def Str choice ""
+Def Str complaint "你"
+Def Str sentence ""
+Def Str account "rcx"
+# Def Str BKBKJ ""
+Def Str temp ""
+Def Num money 0
+Step _main
+    # Go _welcome
+    # Exit
+    # Speak sentence
+    # Listen addmoney
+    # Speak complaint
+    # 词法错误示例
+    # BCVID
+    # 语法错误示例
+    # 变量未定义
+    # Speak hi
+    # 句型错误
+    # Speak "rcx" "yyt"
+    
+    # 数据类型不匹配错误
+    # Exp addmoney  = addmoney / ""
+    # Exp complaint = complaint * ""
+    # Exp addmoney = complaint
+
+
+    # 非法操作示例
+    # 当输入/读入内容与变量类型不符合
+    # Listen addmoney
+    # Read account 3 addmoney
+    # 除 0 表达式
+    # Exp money = money / 0
+    # 文件不存在
+    # Read "dshims" 2 choice
+  
+End_step

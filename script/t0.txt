@@ -1,0 +1,79 @@
+Def Num addmoney 0
+Def Str choice ""
+Def Str complaint "我爱你"
+Def Str sentence ""
+Def Str account "rcx"
+Def Str temp ""
+Def Num money 0
+Step _main
+    Go _welcome
+#    Exit
+End_step
+Step _welcome
+    Speak "你好,请问有什么可以帮您"
+    Listen choice
+    Switch choice
+        Branch "投诉" _complain
+        Branch "账单" _bill
+        Branch "充值" _charge
+        Branch "退出" _thanks
+        Branch "gun" _exit
+        Branch "" _silence
+        Default _default
+    End_switch
+End_step
+Step _complain
+    Speak "您的意见是我们改进工作的动力，请问您还有什么补充"
+    Listen complaint
+    Write "complain.txt" complaint 1
+    # Go _thanks
+    Go _welcome
+End_step
+Step _bill
+    Speak "请输入你的账户"
+    Listen account
+    # account文件的第一行记录了本月账单
+    Read account 1 money
+    Exp sentence = "您的本月账单是" + money 
+    Exp sentence = sentence + "元"
+    Speak sentence
+    Go _welcome
+    # Exit
+End_step
+Step _silence
+    # 未接收到输入
+    Speak "没听清您的要求，请说再一遍"
+    Go _welcome
+End_step
+Step _default
+    Speak "对不起，无法理解您所说的内容，请说再一遍"
+    Go _welcome
+End_step
+Step _charge
+    Speak "请输入充值账户"
+    Listen account
+    # temp 暂存内容
+    Read account 1 temp
+    Read account 2 money
+    Exp sentence = "您的余额目前是" + money 
+    Exp sentence = sentence + "元"
+    Speak sentence
+    Speak "请输入充值金额"
+    Listen addmoney
+    Exp money = money + addmoney
+    Speak "充值中，请稍等"
+    Slience 5
+    Exp sentence = "您的余额目前是" + money 
+    Exp sentence = sentence + "元"
+    Speak sentence
+    Write account temp 0
+    Write account money 1
+    Go _welcome
+End_step
+Step _thanks
+    Speak "感谢你的来电，再见"
+    Exit
+End_step
+Step _exit
+    Speak "对不起，没能为您提供帮助，再见"
+End_step
